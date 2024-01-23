@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mir</string>
+    <string name="createAcc">Создать aккаунт</string>
+    <string name="or_continue">Или продолжить</string>
+    <string name="enter">Войти</string>
+
 </resources>

@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -82,7 +83,7 @@ fun Content() {
 
             ) {
                 Text(
-                    "Войти",
+                    stringResource(id = R.string.enter),
                     fontSize = 19.sp,
                     fontFamily = font,
                     color = Color.White
@@ -103,7 +104,7 @@ fun Content() {
 
             ) {
                 Text(
-                    "Создать aккаунт",
+                    text= stringResource(id = R.string.createAcc),
                     fontSize = 19.sp,
                     fontFamily = font,
                     color = Color.Black
@@ -121,7 +122,10 @@ fun Content() {
 }
 @Composable
 fun RegistrationViaAcc() {
-    Box (Modifier.fillMaxHeight().fillMaxWidth(),
+    Box (
+        Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
         contentAlignment = Alignment.BottomCenter){
 
 
@@ -175,13 +179,16 @@ fun RegistrationViaAcc() {
 @Composable
 fun Replies() {
     val font = FontFamily(Font(R.font.sf_pro_display_light))
-    Row(Modifier.fillMaxWidth().padding(bottom=20.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(bottom = 20.dp), verticalAlignment = Alignment.CenterVertically) {
         Box(modifier = Modifier
             .height(1.dp)
             .weight(1f)
             .background(Color.Gray)) {}
         ClickableText(
-            text = AnnotatedString("Или продолжить"), onClick = {}, modifier = Modifier.weight(1f),
+            text = AnnotatedString(stringResource(id = R.string.or_continue)), onClick = {}, modifier = Modifier.weight(1f),
             style = TextStyle(
                 textAlign = TextAlign.Center, fontFamily = font
             ),
