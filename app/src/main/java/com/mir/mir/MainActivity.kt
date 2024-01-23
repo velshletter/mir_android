@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.mir.mir.ui.screens.AppNavHost
+import com.mir.mir.screen.SingInView
 import com.mir.mir.ui.theme.MirTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,14 +19,16 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
+
+            SingInView()/*
             MirTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavHost(navController = rememberNavController())
+                  //  AppNavHost(navController = rememberNavController())
                 }
-            }
+            }*/
         }
     }
 }
