@@ -1,32 +1,28 @@
-package com.mir.mir.screen
+package com.mir.mir.screen.CreateAccount
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -37,8 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -46,23 +40,28 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mir.mir.R
-import com.mir.mir.screen.NumberDefaults.INPUT_LENGTH
-import com.mir.mir.screen.NumberDefaults.MASK
+import com.mir.mir.screen.CreateAccount.NumberDefaults.INPUT_LENGTH
+import com.mir.mir.screen.CreateAccount.NumberDefaults.MASK
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
+import com.mir.mir.ui.theme.TextNotActiv
 
 private val fontBold = FontFamily(Font(R.font.sf_pro_display_bold))
 private val fontMedium = FontFamily(Font(R.font.sf_pro_display_medium))
 private val fontLight = FontFamily(Font(R.font.sf_pro_display_light))
 
+
+
 @Composable
-fun CreateAccountView() {
-    Column(Modifier.padding(top = 60.dp, end = 16.dp, start = 16.dp)) {
+fun CreateAccountView(function: () -> Unit) {
+
+    val checkedState = remember { mutableStateOf(false) }
+
+    Column(Modifier.padding(top = 90.dp, end = 16.dp, start = 16.dp)) {
         DefaultsText(isFat = true, text = stringResource(id = R.string.createAcc), sizeText = 24)
         DefaultsText(
             isFat = false,
@@ -77,7 +76,7 @@ fun CreateAccountView() {
         CustomTextField()
 
         Row(Modifier.padding(top = 15.dp)) {
-            val checkedState = remember { mutableStateOf(true) }
+
             Checkbox(
                 checked = checkedState.value,
                 onCheckedChange = { checkedState.value = it },
@@ -96,8 +95,11 @@ fun CreateAccountView() {
                 fontFamily = fontMedium
             )
         }
-
     }
+    BoxResume(checkedState = checkedState.value)
+
+
+
 }
 
 @Composable
@@ -279,8 +281,101 @@ fun Spinner() {
     }
 }
 
+@Composable
+fun BoxResume(checkedState: Boolean) {
 
-/* }
-}*/
+
+    Box(
+        Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(), contentAlignment = Alignment.BottomCenter
+    ) {
+
+
+        Column() {
+
+
+            Box(
+                modifier = Modifier
+                    .padding(start=16.dp,end=16.dp)
+                    .height(1.dp)
+                    .fillMaxWidth()
+                    .background(Color.Gray)
+
+            ) {}
+
+
+            Row(Modifier.fillMaxWidth().padding(start=16.dp,end=16.dp,top=15.dp, bottom = 15.dp),
+                horizontalArrangement = Arrangement.Center) {
+
+                Text(
+                    text = stringResource(id = R.string.you_already_have_an_account),
+                    fontFamily = fontMedium,
+                    fontSize = 16.sp,
+                    modifier = Modifier.align(Alignment.CenterVertically)
+                )
+
+                TextButton(onClick = {}) {
+                    Text(
+                        text = stringResource(id = R.string.enter),
+                        color = BackgroundBtn,
+                        fontFamily = fontMedium,
+                        fontSize = 16.sp
+                    )
+                }
+            }
+            Box(
+                Modifier.background(
+                    color = if (checkedState) {
+                        BackgroundBtnGrey
+                    } else {
+                        Color.Transparent
+                    }
+                ).padding(start=16.dp,end=16.dp,top=15.dp,bottom=25.dp),
+                contentAlignment = Alignment.TopCenter
+            ) {
+                Button(
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = if (checkedState) {
+                            Color.White
+                        } else {
+                            TextNotActiv
+                        },
+                        containerColor = if (checkedState) {
+                            BackgroundBtn
+                        } else {
+                            Color.Transparent
+                        },
+                    ),
+                    modifier = Modifier
+                        .padding(top = 15.dp)
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(30.dp)
+
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.resume),
+                        fontSize = 19.sp,
+                        fontFamily = fontMedium,
+                        color = if (checkedState) {
+                            Color.White
+                        } else {
+                            TextNotActiv
+                        }
+                    )
+
+                }
+
+            }
+
+
+        }
+    }
+}
+
+
+
+
 
 
