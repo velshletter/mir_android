@@ -1,4 +1,4 @@
-package com.mir.mir.screen
+package com.mir.mir.screen.CreateAccount
 
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
