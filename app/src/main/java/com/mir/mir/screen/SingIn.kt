@@ -104,7 +104,7 @@ fun Content() {
 
             ) {
                 Text(
-                    text= stringResource(id = R.string.createAcc),
+                    text = stringResource(id = R.string.createAcc),
                     fontSize = 19.sp,
                     fontFamily = font,
                     color = Color.Black
@@ -120,13 +120,15 @@ fun Content() {
 
 
 }
+
 @Composable
 fun RegistrationViaAcc() {
-    Box (
+    Box(
         Modifier
             .fillMaxHeight()
             .fillMaxWidth(),
-        contentAlignment = Alignment.BottomCenter){
+        contentAlignment = Alignment.BottomCenter
+    ) {
 
 
         Column() {
@@ -182,21 +184,28 @@ fun Replies() {
     Row(
         Modifier
             .fillMaxWidth()
-            .padding(bottom = 20.dp), verticalAlignment = Alignment.CenterVertically) {
-        Box(modifier = Modifier
-            .height(1.dp)
-            .weight(1f)
-            .background(Color.Gray)) {}
+            .padding(bottom = 20.dp), verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .height(1.dp)
+                .weight(1f)
+                .background(Color.Gray)
+        ) {}
         ClickableText(
-            text = AnnotatedString(stringResource(id = R.string.or_continue)), onClick = {}, modifier = Modifier.weight(1f),
+            text = AnnotatedString(stringResource(id = R.string.or_continue)),
+            onClick = {},
+            modifier = Modifier.weight(1f),
             style = TextStyle(
                 textAlign = TextAlign.Center, fontFamily = font
             ),
         )
-        Box(modifier = Modifier
-            .height(1.dp)
-            .weight(1f)
-            .background(Color.Gray)) {}
+        Box(
+            modifier = Modifier
+                .height(1.dp)
+                .weight(1f)
+                .background(Color.Gray)
+        ) {}
     }
 }
 
