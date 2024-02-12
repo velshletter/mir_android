@@ -38,9 +38,6 @@ import com.mir.mir.R
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
 
-//@Preview(showBackground = true) //widthDp = 320,heightDp = 320
-
-
 @Composable
 fun SingInView(onClick:()->Unit) {
 
