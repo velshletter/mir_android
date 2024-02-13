@@ -1,28 +1,21 @@
-package com.mir.mir.screen.CreateAccount
+package com.mir.mir.screen.CreateAccount.CreateWithNumber
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -44,20 +37,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mir.mir.R
-import com.mir.mir.screen.CreateAccount.NumberDefaults.INPUT_LENGTH
-import com.mir.mir.screen.CreateAccount.NumberDefaults.MASK
+import com.mir.mir.screen.CreateAccount.CreateWithNumber.NumberDefaults.INPUT_LENGTH
+import com.mir.mir.screen.CreateAccount.CreateWithNumber.NumberDefaults.MASK
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
-import com.mir.mir.ui.theme.TextNotActiv
 
 private val fontBold = FontFamily(Font(R.font.sf_pro_display_bold))
 private val fontMedium = FontFamily(Font(R.font.sf_pro_display_medium))
 private val fontLight = FontFamily(Font(R.font.sf_pro_display_light))
 
+@Preview
+@Composable
+fun PrewView(){
+    CreateAccountView()
+}
 
 
 @Composable
-fun CreateAccountView(function: () -> Unit) {
+fun CreateAccountView() {
 
     val checkedState = remember { mutableStateOf(false) }
 
@@ -96,7 +93,7 @@ fun CreateAccountView(function: () -> Unit) {
             )
         }
     }
-    BoxResume(checkedState = checkedState.value)
+ //   BoxResume(checkedState = checkedState.value)
 
 
 
@@ -281,6 +278,7 @@ fun Spinner() {
     }
 }
 
+/*
 @Composable
 fun BoxResume(checkedState: Boolean) {
 
@@ -335,7 +333,9 @@ fun BoxResume(checkedState: Boolean) {
                 contentAlignment = Alignment.TopCenter
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { */
+/*TODO*//*
+ },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = if (checkedState) {
                             Color.White
@@ -379,3 +379,4 @@ fun BoxResume(checkedState: Boolean) {
 
 
 
+*/

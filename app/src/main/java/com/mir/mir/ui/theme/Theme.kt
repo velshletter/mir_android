@@ -18,13 +18,13 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    surface = ThemeColors.Night.surface,
-    onSurface = ThemeColors.Night.onSurface,
-    primary = ThemeColors.Night.accentColor,
-    onPrimary = ThemeColors.Night.onAccentColor,
-    secondary=ThemeColors.Night.secondary,
-    onSecondary = ThemeColors.Night.onSecondary,
-    error = ThemeColors.Night.error
+    surface = ThemeColors.Day.surface,
+    onSurface = ThemeColors.Day.onSurface,
+    primary = ThemeColors.Day.accentColor,
+    onPrimary = ThemeColors.Day.onAccentColor,
+    secondary=ThemeColors.Day.secondary,
+    onSecondary = ThemeColors.Day.onSecondary,
+    error = ThemeColors.Day.error
 
 )
 

@@ -29,7 +29,7 @@ sealed class ThemeColors(
         accentColor = Color(0xFF896AEE),
         onAccentColor = Color(0xFFFFFFFF),
         secondary = Color(0xFFF2F2F2),
-        onSecondary = Color(0xFFD5D1D1),
+        onSecondary = Color(0xFF8D9496),
         error = Color(0xFFEB5353)
     )
     object Night:ThemeColors(

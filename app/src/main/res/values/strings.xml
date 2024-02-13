@@ -9,6 +9,9 @@
     <string name="agreement_policy">Я согласен с публичным соглашением, условиями и политикой конфиденциальности.</string>
     <string name="you_already_have_an_account">У вас уже есть аккаунт?</string>
     <string name="resume">Продолжить</string>
+    <string name="password">Пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="email">Почта</string>
 
 
 </resources>
