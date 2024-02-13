@@ -30,19 +30,17 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavController
 import com.mir.mir.R
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
 
-//@Preview(showBackground = true) //widthDp = 320,heightDp = 320
 
 
 @Composable
-fun SingInView(onClick:()->Unit) {
+fun SingInView(navController: NavController) {
 
     Column(
         modifier = Modifier
@@ -88,7 +86,7 @@ fun SingInView(onClick:()->Unit) {
 
 
             Button(
-                onClick = { onClick() },
+                onClick = { navController.navigate("ScreenCreateAccountFinal") },
                 colors = ButtonDefaults.buttonColors(
                     contentColor = BackgroundBtn,
                     containerColor = Color.Transparent
