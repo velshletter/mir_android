@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import com.mir.mir.R
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
-import com.mir.mir.ui.theme.MirTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,26 +82,7 @@ fun CustomTextField(
         ),
         trailingIcon = trailingIcon,
         shape = RoundedCornerShape(15.dp)
-
-//                    visualTransformation = if (passwordVisibility) {
-//                        VisualTransformation.None
-//                    } else {
-//                        PasswordVisualTransformation()
-//                    }
     )
-//            }
-//        }
-//    }
-}
-
-//@Preview(showBackground = true)
-@Composable
-fun FillProfilePreview() {
-    MirTheme(darkTheme = false) {
-//        FillProfileScreen(rememberNavController())
-//        CustomTextField(placeholder = "Введите имя")
-//        SelectItem("Мужчина")
-    }
 }
 
 @Composable
@@ -164,13 +144,14 @@ fun SelectItem(
 }
 
 @Composable
-fun HeaderLarge(text: String){
+fun HeaderLarge(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.displayLarge,
         modifier = Modifier.padding(top = 24.dp)
     )
 }
+
 @Composable
 fun HeaderMedium(text: String) {
     Text(
