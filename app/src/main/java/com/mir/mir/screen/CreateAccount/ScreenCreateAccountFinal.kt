@@ -15,18 +15,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.traceEventEnd
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,16 +36,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.mir.mir.R
-import com.mir.mir.screen.CustomTextFieldOrigen
+import com.mir.mir.screen.CustomTextFieldOrigin
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
 import com.mir.mir.ui.theme.TextNotActiv
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ScreenCreateAccountFinal(navController: NavController) {
-
 
     Scaffold(
         topBar = {
@@ -59,11 +60,11 @@ fun ScreenCreateAccountFinal(navController: NavController) {
                 })
         },
         bottomBar = {
-            ButtonResume(checkedState = false)
+            ButtonResume(onCLick = {navController.navigate("ProfileView")}, checkedState = false)
 
         }
     ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
+        Surface(modifier = Modifier.padding(innerPadding)) {
             BoxEmailPassword()
         }
 
@@ -73,8 +74,6 @@ fun ScreenCreateAccountFinal(navController: NavController) {
 @Composable
 fun BoxEmailPassword() {
     val checkedState = remember { mutableStateOf(false) }
-
-
 
     Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
         Text(
@@ -88,15 +87,15 @@ fun BoxEmailPassword() {
             modifier = Modifier.padding(bottom = 24.dp)
         )
 
-        CustomTextFieldOrigen(stringResource(id = R.string.email), false)
-        CustomTextFieldOrigen(
+        CustomTextFieldOrigin(stringResource(id = R.string.email), false)
+        CustomTextFieldOrigin(
             stringResource(id = R.string.password), true)
-        CustomTextFieldOrigen(
+        CustomTextFieldOrigin(
             stringResource(id = R.string.repeat_password),true
         )
         Row(Modifier.padding(top = 15.dp)) {
 
-            androidx.compose.material3.Checkbox(
+              Checkbox(
                 checked = checkedState.value,
                 onCheckedChange = { checkedState.value = it },
                 colors = CheckboxDefaults.colors(
@@ -112,7 +111,6 @@ fun BoxEmailPassword() {
                 style = MaterialTheme.typography.headlineMedium
             )
         }
-
         BoxSignIn()
     }
 
@@ -172,7 +170,10 @@ fun BoxSignIn() {
 }
 
 @Composable
-fun ButtonResume(checkedState: Boolean) {
+fun ButtonResume(
+    onCLick:() -> Unit,
+    checkedState: Boolean
+) {
     Box(
         Modifier
             .background(
@@ -186,7 +187,7 @@ fun ButtonResume(checkedState: Boolean) {
         contentAlignment = Alignment.TopCenter
     ) {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = onCLick,
             colors = ButtonDefaults.buttonColors(
                 contentColor = if (checkedState) {
                     Color.White

@@ -13,5 +13,12 @@
     <string name="repeat_password">Повторите пароль</string>
     <string name="email">Почта</string>
 
+    <string name="fill_interests">Заполните ваши интересы</string>
+    <string name="fill_your_profile">Заполните Ваш профиль</string>
+    <string name="name">Имя</string>
+    <string name="date_birth">Дата рождения</string>
+    <string name="sex">Пол</string>
+    <string name="height">Рост</string>
+    <string name="what_you_search">Что Вы ищите?</string>
 
 </resources>

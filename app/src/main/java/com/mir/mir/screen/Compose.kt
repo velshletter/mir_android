@@ -4,14 +4,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,6 +40,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mir.mir.R
 import com.mir.mir.ui.theme.BackgroundBtn
@@ -71,8 +76,8 @@ fun CustomTextField(
         keyboardOptions = keyboardOptions,
         singleLine = singleLine,
         colors = TextFieldDefaults.textFieldColors(
-            textColor = Color.Black,
-            placeholderColor = MaterialTheme.colorScheme.onSecondary,
+            focusedTextColor = Color.Black,
+            focusedPlaceholderColor = MaterialTheme.colorScheme.onSecondary,
             containerColor = BackgroundBtnGrey,
             disabledTextColor = Color.Transparent,
             focusedIndicatorColor = Color.Transparent,
@@ -106,16 +111,18 @@ fun AddPhotoButton(onClick: () -> Unit) {
         )
     }
 }
-
+//@Preview
 @Composable
 fun SelectItem(
-    text: String = "",
-    isSelected: Boolean,
-    onItemSelected: () -> Unit
+    text: String = "Helloo",
+    isSelected: Boolean = false,
+    onItemSelected: () -> Unit = {}
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     Box(
-        modifier = Modifier.clickable(
+        modifier = Modifier
+            .wrapContentSize()
+            .clickable(
             interactionSource = interactionSource,
             indication = null,
             onClick = onItemSelected
@@ -130,7 +137,7 @@ fun SelectItem(
             )
     ) {
         Text(
-            modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 20.dp, end = 20.dp),
+            modifier = Modifier .padding(top = 8.dp, bottom = 8.dp, start = 20.dp, end = 20.dp),
             textAlign = TextAlign.Center,
             text = text,
             style = MaterialTheme.typography.headlineMedium,
@@ -143,6 +150,58 @@ fun SelectItem(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun CustomFlowRow(
+    content: @Composable () -> Unit
+){
+    FlowRow(
+        modifier = Modifier.wrapContentSize(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        content
+    }
+}
+
+/*@Preview
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CustomFilterChip(
+    text: String = "Helloo",
+    isSelected: Boolean = false,
+    onItemSelected: () -> Unit = {}
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    FilterChip(
+        modifier = Modifier
+                   .clip(shape = RoundedCornerShape(26.dp)),
+        onClick = {
+
+        },
+        shape = FilterChipDefaults.shape,
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = BackgroundBtn,
+            disabledContainerColor = BackgroundBtnGrey,
+            containerColor = BackgroundBtnGrey
+        ),
+        border = FilterChipDefaults.filterChipBorder(borderWidth = 0.dp),
+        selected = isSelected,
+        label = {
+            Text(
+                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 20.dp, end = 20.dp),
+                textAlign = TextAlign.Center,
+                text = text,
+                style = MaterialTheme.typography.headlineMedium,
+                color = if (isSelected) {
+                    Color.White
+                } else {
+                    Color.Black
+                },
+            )
+        }
+    )
+}*/
 @Composable
 fun HeaderLarge(text: String) {
     Text(
@@ -226,7 +285,7 @@ fun PasswordFieldText(title: String) {
                     textStyle = MaterialTheme.typography.headlineLarge,
                     singleLine = true,
                     colors = TextFieldDefaults.textFieldColors(
-                        textColor = MaterialTheme.colorScheme.onSecondary,
+                        focusedTextColor = MaterialTheme.colorScheme.onSecondary,
                         containerColor = Color.Transparent,
                         disabledTextColor = Color.Transparent,
                         focusedIndicatorColor = Color.Transparent,
@@ -306,7 +365,7 @@ fun EmailFieldText(title: String) {
                     textStyle = MaterialTheme.typography.headlineLarge,
                     singleLine = true,
                     colors = TextFieldDefaults.textFieldColors(
-                        textColor = MaterialTheme.colorScheme.onSecondary,
+                        focusedTextColor = MaterialTheme.colorScheme.onSecondary,
                         containerColor = Color.Transparent,
                         disabledTextColor = Color.Transparent,
                         focusedIndicatorColor = Color.Transparent,

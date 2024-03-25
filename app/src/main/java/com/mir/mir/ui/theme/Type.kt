@@ -16,13 +16,6 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-    headlineLarge = TextStyle(
-        fontFamily = FontFamily(Font(R.font.sf_pro_display_medium)),
-        fontWeight = FontWeight.Normal,
-        fontSize = 18.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
     displayMedium = TextStyle(
         fontFamily = FontFamily(Font(R.font.sf_pro_display_bold)),
         fontWeight = FontWeight.Normal,
@@ -30,15 +23,29 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-    headlineSmall = TextStyle(
+    displaySmall = TextStyle(
         fontFamily = FontFamily(Font(R.font.sf_pro_display_bold)),
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
+        fontSize = 14.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sf_pro_display_medium)),
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     headlineMedium = TextStyle(
         fontFamily = FontFamily(Font(R.font.sf_pro_display_medium)),
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.sf_pro_display_bold)),
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,

@@ -47,7 +47,7 @@ import com.mir.mir.R
 import com.mir.mir.screen.AddPhotoButton
 import com.mir.mir.screen.CreateAccount.ButtonResume
 import com.mir.mir.screen.CustomTextField
-import com.mir.mir.screen.FillProfile.FillProfileViewModel
+import com.mir.mir.screen.CreateAccount.FillProfile.FillProfileViewModel
 import com.mir.mir.screen.HeaderLarge
 import com.mir.mir.screen.HeaderMedium
 import com.mir.mir.screen.SelectItem
@@ -55,7 +55,7 @@ import com.mir.mir.ui.theme.MirTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FillProfileScreen(navController: NavController, viewModel: FillProfileViewModel = viewModel()) {
+fun FillProfileInfoScreen(navController: NavController, viewModel: FillProfileViewModel = viewModel()) {
 
     Scaffold(
         topBar = {
@@ -72,7 +72,7 @@ fun FillProfileScreen(navController: NavController, viewModel: FillProfileViewMo
         bottomBar = {
             ButtonResume(
                 onCLick = {
-//                navController.navigate("")
+                navController.navigate("FillOption1")
                     Log.d("MyLog", viewModel.sex.value)
                 }, checkedState = false
             )
@@ -249,7 +249,7 @@ fun SexSelector(viewModel: FillProfileViewModel) {
 @Composable
 fun FillProfilePreview() {
     MirTheme(darkTheme = false) {
-        FillProfileScreen(rememberNavController())
+        FillProfileInfoScreen(rememberNavController())
 //        AddPhotoButton { }
     }
 }
