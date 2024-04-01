@@ -46,39 +46,6 @@ import de.apuri.physicslayout.lib.PhysicsLayout
 import de.apuri.physicslayout.lib.physicsBody
 import kotlinx.coroutines.delay
 
-
-val items =
-    mutableStateOf(
-        mutableStateMapOf<String, Boolean>(
-            Pair("Собаки", false),
-            Pair("Кошки", false),
-            Pair("Техно", false),
-            Pair("Хип-хоп", false),
-            Pair("Пение", false),
-            Pair("Тусовки и клубы", false),
-            Pair("Трен.зал", false),
-            Pair("Классическая музыка", false),
-            Pair("Кофе", false),
-            Pair("Рисование", false),
-            Pair("Меломан", false),
-            Pair("Чай", false),
-            Pair("Вегетарианство", false),
-            Pair("Фотография", false),
-//            Pair("Танцы", false),
-//            Pair("Рэп", false),
-//            Pair("Пицца", false),
-//                Pair("Театры", false),
-//                Pair("Поп-музыка", false),
-//                Pair("Компьютерные игры", false),
-//                Pair("Велосипед", false),
-//                Pair("Суши", false),
-//                Pair("Музыка", false),
-//                Pair("Бег", false),
-//                Pair("Настольные игры", false),
-//                Pair("Фитнес", false),
-//                Pair("Здоровая еда", false)
-        )
-    )
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InterestsScreen(
@@ -122,113 +89,42 @@ fun InterestsPhysicsLayout() {
             .padding(start = 16.dp, end = 16.dp)
     ) {
         HeaderLarge("Заполните Ваши интересы")
-//        Button(
-//            modifier = Modifier,
-//            onClick = {
-//                items.put((items.size + 1).toString(), false)
-//                Log.d("MyLog", items.size.toString())
-//            },
-//            content = {
-//                Text("add")
-//            }
-//        )
-        PhysicsLayout(
-            modifier = Modifier.fillMaxSize(),
-            content = {
-                Card(
-                    modifier = Modifier
-                        .physicsBody(
-                            shape = CircleShape,
-                            bodyConfig = BodyConfig(angularDamping = 1f, restitution = 1f, density = 1.5f)
-                        ).align(Alignment.Center)
-//                        .offset((-50).dp)
-                        .size(90.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color.Black
-                    ),
-                    shape = CircleShape,
-                ){}
-                items.value.forEach { (text, b) ->
-                    var isSelected by remember { mutableStateOf(b) }
-                    var size by remember { mutableStateOf(if (isSelected) 120.dp else 90.dp) }
-                    var color by remember { mutableStateOf(if (isSelected) BackgroundBtn else BackgroundBtnGrey) }
-                    LaunchedEffect(key1 = text) {
-                        delay(1000)
-                    }
-                    Card(
-                        modifier = Modifier
-                            .physicsBody(
-                                shape = CircleShape
-                            ).align(Alignment.TopCenter)
-                            .size(size)
-                            .clickable {
-                                isSelected = !isSelected
-                                size = if (isSelected) 120.dp else 90.dp
-                                color = if (isSelected) BackgroundBtn else BackgroundBtnGrey
-                                items.value.put(text, isSelected)
-                            },
-                        colors = CardDefaults.cardColors(
-                            containerColor = color
-                        ),
-                        shape = CircleShape,
-                    ) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = text,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .padding(8.dp)
-                            )
-                        }
-                    }
-                }
-            })
     }
 }
 
-@Composable
-fun InterestBall(text: String, b: Boolean){
-    var isSelected by remember { mutableStateOf(b) }
-    var size by remember { mutableStateOf(if (isSelected) 120.dp else 100.dp) }
-    var color by remember { mutableStateOf(if (isSelected) BackgroundBtn else BackgroundBtnGrey) }
-    LaunchedEffect(key1 = text) {
-        // Добавляем задержку в 100 миллисекунд между созданием каждого элемента
-        delay(1000)
-    }
-    Card(
-        modifier = Modifier
-            .physicsBody(
-                shape = CircleShape
-            )
-            .size(size)
-            .clickable {
-                isSelected = !isSelected
-                size = if (isSelected) 120.dp else 100.dp
-                color = if (isSelected) BackgroundBtn else BackgroundBtnGrey
-                items.value.put(text, isSelected)
-            },
-        colors = CardDefaults.cardColors(
-            containerColor = color
-        ),
-        shape = CircleShape,
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = text,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .padding(8.dp)
-                    .wrapContentHeight()
-            )
-        }
-    }
-}
+
+val items =
+    mutableStateOf(
+        mutableStateMapOf<String, Boolean>(
+            Pair("Собаки", false),
+            Pair("Кошки", false),
+            Pair("Техно", false),
+            Pair("Хип-хоп", false),
+            Pair("Пение", false),
+            Pair("Тусовки и клубы", false),
+            Pair("Трен.зал", false),
+            Pair("Классическая музыка", false),
+            Pair("Кофе", false),
+            Pair("Рисование", false),
+            Pair("Меломан", false),
+            Pair("Чай", false),
+            Pair("Вегетарианство", false),
+            Pair("Фотография", false),
+            Pair("Танцы", false),
+            Pair("Рэп", false),
+            Pair("Пицца", false),
+            Pair("Театры", false),
+            Pair("Поп-музыка", false),
+            Pair("Компьютерные игры", false),
+            Pair("Велосипед", false),
+            Pair("Суши", false),
+            Pair("Музыка", false),
+            Pair("Бег", false),
+            Pair("Настольные игры", false),
+            Pair("Фитнес", false),
+            Pair("Здоровая еда", false)
+        )
+    )
 
 @Preview()
 @Composable
