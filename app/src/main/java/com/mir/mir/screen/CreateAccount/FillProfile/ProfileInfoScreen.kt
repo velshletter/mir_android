@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -45,7 +46,7 @@ import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.mir.mir.R
 import com.mir.mir.screen.AddPhotoButton
-import com.mir.mir.screen.CreateAccount.ButtonResume
+import com.mir.mir.screen.ButtonResume
 import com.mir.mir.screen.CustomTextField
 import com.mir.mir.screen.CreateAccount.FillProfile.FillProfileViewModel
 import com.mir.mir.screen.HeaderLarge
@@ -74,12 +75,12 @@ fun FillProfileInfoScreen(navController: NavController, viewModel: FillProfileVi
                 onCLick = {
                 navController.navigate("FillOption1")
                     Log.d("MyLog", viewModel.sex.value)
-                }, checkedState = false
+                }
             )
 
         }
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
+        Surface(Modifier.padding(innerPadding)) {
             FillProfileLayout(viewModel)
         }
     }
@@ -94,7 +95,6 @@ fun FillProfileLayout(viewModel: FillProfileViewModel) {
             .verticalScroll(rememberScrollState())
     ) {
         HeaderLarge(stringResource(R.string.fill_your_profile))
-        Spacer(Modifier.size(8.dp))
         HeaderMedium(text = stringResource(R.string.name))
         CustomTextField(
             modifier = Modifier.fillMaxWidth(),

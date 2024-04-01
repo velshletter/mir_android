@@ -32,14 +32,12 @@ fun Navigation() {
         NavHost(navController = navController, startDestination = "SingInView") {
             composable("SingInView") {
                 SingInView(navController)
-//                LocationManualScreen(navController)
             }
             composable("ScreenCreateAccountFinal") {
                 ScreenCreateAccountFinal(navController)
             }
             composable("ProfileView"){
                 FillProfileInfoScreen(navController)
-//                TurnOnYourLocationScreen(navController)
             }
             composable("FillOption1"){
                 Options1Screen(navController)

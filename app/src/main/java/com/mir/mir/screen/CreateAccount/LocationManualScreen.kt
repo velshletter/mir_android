@@ -19,6 +19,7 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.mir.mir.R
+import com.mir.mir.screen.ButtonResume
 import com.mir.mir.screen.CreateAccount.FillProfile.FillProfileViewModel
 import com.mir.mir.screen.CustomTextField
 import com.mir.mir.screen.HeaderLarge
@@ -69,7 +71,7 @@ fun LocationManualScreen(
 
         }
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
+        Surface(Modifier.padding(innerPadding)) {
             LocationManualLayout(viewModel)
         }
     }

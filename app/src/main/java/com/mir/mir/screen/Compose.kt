@@ -10,14 +10,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -45,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import com.mir.mir.R
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
+import com.mir.mir.ui.theme.TextNotActiv
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,6 +65,7 @@ fun CustomTextField(
     singleLine: Boolean = true,
     textStyle: TextStyle = MaterialTheme.typography.headlineMedium,
     textAlign: TextAlign? = null,
+    visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
     TextField(
         value = value,
@@ -86,8 +93,52 @@ fun CustomTextField(
             cursorColor = Color.Black
         ),
         trailingIcon = trailingIcon,
-        shape = RoundedCornerShape(15.dp)
+        shape = RoundedCornerShape(16.dp),
+        visualTransformation = visualTransformation
     )
+}
+
+@Composable
+fun ButtonResume(
+    onCLick: () -> Unit,
+    checkedState: Boolean = true
+) {
+    Box(
+        Modifier
+            .padding(start = 16.dp, end = 16.dp,top = 16.dp, bottom = 16.dp),
+        contentAlignment = Alignment.TopCenter
+    ) {
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(56.dp),
+            onClick = onCLick,
+            colors = ButtonDefaults.buttonColors(
+                contentColor = if (checkedState) {
+                    Color.White
+                } else {
+                    TextNotActiv
+                },
+                containerColor = if (checkedState) {
+                    BackgroundBtn
+                } else {
+                    Color.Transparent
+                },
+            ),
+            shape = RoundedCornerShape(30.dp)
+
+        ) {
+            Text(
+                text = stringResource(id = R.string.resume),
+                style = MaterialTheme.typography.displayMedium,
+                color = if (checkedState) {
+                    Color.White
+                } else {
+                    TextNotActiv
+                }
+            )
+        }
+    }
 }
 
 @Composable
@@ -111,10 +162,10 @@ fun AddPhotoButton(onClick: () -> Unit) {
         )
     }
 }
-//@Preview
+
 @Composable
 fun SelectItem(
-    text: String = "Helloo",
+    text: String = "",
     isSelected: Boolean = false,
     onItemSelected: () -> Unit = {}
 ) {
@@ -207,7 +258,7 @@ fun HeaderLarge(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.displayLarge,
-        modifier = Modifier.padding(top = 24.dp)
+        modifier = Modifier.padding(top = 24.dp, bottom = 8.dp)
     )
 }
 
@@ -219,173 +270,4 @@ fun HeaderMedium(text: String) {
         color = MaterialTheme.colorScheme.onSurface,
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
     )
-}
-
-
-@Composable
-fun CustomTextFieldOrigin(title: String, isPassword: Boolean) {
-    if (isPassword) {
-        PasswordFieldText(title = title)
-    } else {
-        EmailFieldText(title = title)
-    }
-
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun PasswordFieldText(title: String) {
-    var password by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var passwordVisibility by remember { mutableStateOf(false) }
-
-    val icon = if (passwordVisibility) {
-        painterResource(id = R.drawable.icon_visibility)
-    } else {
-        painterResource(id = R.drawable.icon_not_visibility)
-    }
-    Column {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.displayMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-
-        Box(
-            Modifier
-                .border(
-                    width = if (password != "") 0.dp else 10.dp,
-                    color = if (password != "") BackgroundBtn else Color.Transparent,
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .background(
-                    color = BackgroundBtnGrey,
-                    shape = RoundedCornerShape(15.dp)
-                )
-        ) {
-
-            Row(
-                Modifier.padding(end = 2.dp, start = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-
-                ) {
-
-
-                TextField(
-
-                    value = password,
-                    onValueChange = {
-                        password = it
-                    },
-                    placeholder = { Text(text = "Введите пароль") },
-                    modifier = Modifier.weight(1f),
-                    textStyle = MaterialTheme.typography.headlineLarge,
-                    singleLine = true,
-                    colors = TextFieldDefaults.textFieldColors(
-                        focusedTextColor = MaterialTheme.colorScheme.onSecondary,
-                        containerColor = Color.Transparent,
-                        disabledTextColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Color.Gray
-                    ),
-
-                    trailingIcon = {
-                        IconButton(
-                            onClick = {
-                                passwordVisibility = !passwordVisibility
-                            }) {
-                            Icon(
-                                painter = icon,
-                                contentDescription = "Visibility password",
-                                Modifier.size(20.dp)
-                            )
-
-                        }
-                    },
-                    visualTransformation = if (passwordVisibility) {
-                        VisualTransformation.None
-                    } else {
-                        PasswordVisualTransformation()
-                    }
-                )
-            }
-        }
-    }
-}
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun EmailFieldText(title: String) {
-    var text by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    Column {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.displayMedium,
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-
-        Box(
-            Modifier
-                .border(
-                    width = if (text != "") 0.dp else 10.dp,
-                    color = if (text != "") BackgroundBtn else Color.Transparent,
-                    shape = RoundedCornerShape(15.dp)
-                )
-                .background(
-                    color = BackgroundBtnGrey,
-                    shape = RoundedCornerShape(15.dp)
-                )
-        ) {
-
-            Row(
-                Modifier.padding(end = 2.dp, start = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-
-                ) {
-
-
-                TextField(
-
-                    value = text,
-                    onValueChange = {
-                        text = it
-                    },
-                    placeholder = { Text(text = "Введите почту") },
-                    modifier = Modifier.weight(1f),
-                    textStyle = MaterialTheme.typography.headlineLarge,
-                    singleLine = true,
-                    colors = TextFieldDefaults.textFieldColors(
-                        focusedTextColor = MaterialTheme.colorScheme.onSecondary,
-                        containerColor = Color.Transparent,
-                        disabledTextColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Color.Gray
-                    ),
-
-                    trailingIcon = {
-
-                        Icon(
-                            painter = painterResource(id = R.drawable.icon_email),
-                            contentDescription = "Visibility password",
-                            Modifier.size(20.dp)
-                        )
-
-                    }
-
-                )
-            }
-        }
-    }
 }

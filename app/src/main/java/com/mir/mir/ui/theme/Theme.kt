@@ -14,7 +14,6 @@ private val DarkColorScheme = darkColorScheme(
     secondary=ThemeColors.Night.secondary,
     onSecondary = ThemeColors.Night.onSecondary,
     error = ThemeColors.Night.error
-
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -25,14 +24,11 @@ private val LightColorScheme = lightColorScheme(
     secondary=ThemeColors.Day.secondary,
     onSecondary = ThemeColors.Day.onSecondary,
     error = ThemeColors.Day.error
-
 )
 
 @Composable
 fun MirTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-//    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
     MaterialTheme(

@@ -16,6 +16,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -36,7 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mir.mir.R
-import com.mir.mir.screen.CreateAccount.ButtonResume
+import com.mir.mir.screen.ButtonResume
 import com.mir.mir.screen.HeaderLarge
 import com.mir.mir.ui.theme.BackgroundBtn
 import com.mir.mir.ui.theme.BackgroundBtnGrey
@@ -68,13 +69,12 @@ fun InterestsScreen(
             ButtonResume(
                 onCLick = {
                     navController.navigate("TurnOnLocationScreen")
-                },
-                checkedState = false
+                }
             )
 
         }
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
+        Surface(Modifier.padding(innerPadding)) {
             InterestsPhysicsLayout()
         }
     }
@@ -89,8 +89,117 @@ fun InterestsPhysicsLayout() {
             .padding(start = 16.dp, end = 16.dp)
     ) {
         HeaderLarge("Заполните Ваши интересы")
+        //        Button(
+//            modifier = Modifier,
+//            onClick = {
+//                items.put((items.size + 1).toString(), false)
+//                Log.d("MyLog", items.size.toString())
+//            },
+//            content = {
+//                Text("add")
+//            }
+//        )
+//        PhysicsLayout(
+//            modifier = Modifier.fillMaxSize(),
+//            content = {
+//                Card(
+//                    modifier = Modifier
+//                        .physicsBody(
+//                            shape = CircleShape,
+//                            bodyConfig = BodyConfig(
+//                                angularDamping = 1f,
+//                                restitution = 1f,
+//                                density = 1.5f
+//                            )
+//                        ).align(Alignment.Center)
+////                        .offset((-50).dp)
+//                        .size(90.dp),
+//                    colors = CardDefaults.cardColors(
+//                        containerColor = Color.Black
+//                    ),
+//                    shape = CircleShape,
+//                ) {}
+//                items.value.forEach { (text, b) ->
+//                    var isSelected by remember { mutableStateOf(b) }
+//                    var size by remember { mutableStateOf(if (isSelected) 120.dp else 90.dp) }
+//                    var color by remember { mutableStateOf(if (isSelected) BackgroundBtn else BackgroundBtnGrey) }
+//                    LaunchedEffect(key1 = text) {
+//                        delay(1000)
+//                    }
+//                    Card(
+//                        modifier = Modifier
+//                            .physicsBody(
+//                                shape = CircleShape
+//                            ).align(Alignment.TopCenter)
+//                            .size(size)
+//                            .clickable {
+//                                isSelected = !isSelected
+//                                size = if (isSelected) 120.dp else 90.dp
+//                                color = if (isSelected) BackgroundBtn else BackgroundBtnGrey
+//                                items.value.put(text, isSelected)
+//                            },
+//                        colors = CardDefaults.cardColors(
+//                            containerColor = color
+//                        ),
+//                        shape = CircleShape,
+//                    ) {
+//                        Box(
+//                            modifier = Modifier.fillMaxSize(),
+//                            contentAlignment = Alignment.Center
+//                        ) {
+//                            Text(
+//                                text = text,
+//                                textAlign = TextAlign.Center,
+//                                modifier = Modifier
+//                                    .padding(8.dp)
+//                            )
+//                        }
+//                    }
+//                }
+//            })
     }
 }
+
+//@Composable
+//fun InterestBall(text: String, b: Boolean) {
+//    var isSelected by remember { mutableStateOf(b) }
+//    var size by remember { mutableStateOf(if (isSelected) 120.dp else 100.dp) }
+//    var color by remember { mutableStateOf(if (isSelected) BackgroundBtn else BackgroundBtnGrey) }
+//    LaunchedEffect(key1 = text) {
+//        // Добавляем задержку в 100 миллисекунд между созданием каждого элемента
+//        delay(1000)
+//    }
+//    Card(
+//        modifier = Modifier
+//            .physicsBody(
+//                shape = CircleShape
+//            )
+//            .size(size)
+//            .clickable {
+//                isSelected = !isSelected
+//                size = if (isSelected) 120.dp else 100.dp
+//                color = if (isSelected) BackgroundBtn else BackgroundBtnGrey
+//                items.value.put(text, isSelected)
+//            },
+//        colors = CardDefaults.cardColors(
+//            containerColor = color
+//        ),
+//        shape = CircleShape,
+//    ) {
+//        Box(
+//            modifier = Modifier.fillMaxSize(),
+//            contentAlignment = Alignment.Center
+//        ) {
+//            Text(
+//                text = text,
+//                textAlign = TextAlign.Center,
+//                modifier = Modifier
+//                    .padding(8.dp)
+//                    .wrapContentHeight()
+//            )
+//        }
+//    }
+//}
 
 
 val items =

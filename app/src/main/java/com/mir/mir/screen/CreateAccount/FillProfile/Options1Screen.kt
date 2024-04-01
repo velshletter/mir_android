@@ -15,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -27,7 +28,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.mir.mir.R
 import com.mir.mir.options1
-import com.mir.mir.screen.CreateAccount.ButtonResume
+import com.mir.mir.screen.ButtonResume
 import com.mir.mir.screen.HeaderLarge
 import com.mir.mir.screen.HeaderMedium
 import com.mir.mir.screen.SelectItem
@@ -55,12 +56,12 @@ fun Options1Screen(
             ButtonResume(
                 onCLick = {
                     navController.navigate("FillOption2")
-                }, checkedState = false
+                }
             )
 
         }
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
+        Surface(Modifier.padding(innerPadding)) {
             Options1Layout(viewModel)
         }
     }
@@ -75,7 +76,6 @@ fun Options1Layout(viewModel: FillProfileViewModel) {
             .verticalScroll(rememberScrollState())
     ) {
         HeaderLarge(stringResource(R.string.fill_your_profile))
-        Spacer(Modifier.size(8.dp))
         val goals = options1.find { it.key == "goal" }!!
         HeaderMedium(text = goals.label)
         FlowRow(

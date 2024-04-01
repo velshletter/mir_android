@@ -11,6 +11,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.mir.mir.R
+import com.mir.mir.screen.ButtonResume
 import com.mir.mir.screen.CreateAccount.FillProfile.FillProfileViewModel
 import com.mir.mir.ui.theme.BackgroundBtn
 
@@ -49,13 +51,12 @@ fun TurnOnYourLocationScreen(
             ButtonResume(
                 onCLick = {
 //                    navController.navigate("")
-                },
-                checkedState = false
+                }
             )
 
         }
     ) { innerPadding ->
-        Column(Modifier.padding(innerPadding)) {
+        Surface(Modifier.padding(innerPadding)) {
             TurnOnLocationLayout(viewModel)
         }
     }
